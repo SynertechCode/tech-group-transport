@@ -1,0 +1,153 @@
+<!-- HEADER -->
+<header class="header">
+  <div class="header-container">
+    <div class="header-content">
+      <img  (click)="scrollToTop()" class="logo" src="icons/tech-group-logo.svg" alt="Logo" width="216" height="45">
+      <nav class="header-nav">
+        @if (!isMobile()) {
+          <div class="header-links">
+            <p (click)="scrollToSections('how-it-works')" class="header-link-nav">How It Works</p>
+            <p (click)="scrollToSections('service-options')" class="header-link-nav">Services</p>
+            <div class="header-block-why">
+              <p (mouseenter)="isWhyModalActive = true" (mouseleave)="isWhyModalActive = false" class="header-link-nav">Why Tech <img class="arrow-down" [ngClass]="{ 'active': isWhyModalActive }" src="icons/arrow-down.svg" alt="Arrow down"></p>
+              <div (mouseenter)="isWhyModalActive = true" (mouseleave)="isWhyModalActive = false" class="header-block-why-content" [ngClass]="{ 'active': isWhyModalActive }">
+                <p (click)="scrollToSections('experience-you-can-trust')" class=" header-link-nav-modal">Experience service</p>
+                <p (click)="scrollToSections('effortless')" class=" header-link-nav-modal">We work with</p>
+              </div>
+            </div>
+          </div>
+          <div class="header-quote">
+            <button class="header-quote-button" (click)="scrollToSections('quote')">Get Instant Quote</button>
+            <div class="header-call">
+              <p class="header-call-text">Current wait time: 8 seconds</p>
+              <a class="header-call-link" href="tel:123-123-1234">123-123-1234</a>
+            </div>
+          </div>
+        } @else {
+          <div class="header-call">
+            <img src="icons/phone.svg" alt="phone-call" width="18" height="18">
+            <a class="header-call-link" href="tel:123-123-1234">123-123-1234</a>
+          </div>
+        }
+        <div class="header-burger" [ngClass]="{ 'active': isBurgerActive }" (click)="toggleBurger()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+    <div class="header-burger-menu" [ngClass]="{ 'active': isBurgerActive }">
+      <p (click)="scrollToSections('how-it-works')" class="header-link-nav">How It Works</p>
+      <p (click)="scrollToSections('service-options-mobile')" class="header-link-nav">Services</p>
+      <div class="header-block-why">
+        <p (click)="toggleWhyModal()" class="header-link-nav">Why TTG <img class="arrow-down" [ngClass]="{ 'active': isWhyModalActive }" src="icons/arrow-down.svg" alt="Arrow down" loading="lazy"></p>
+        <div class="header-block-why-content" [ngClass]="{ 'active': isWhyModalActive }">
+          <p (click)="scrollToSections('experience-you-can-trust')" class="header-link-nav">Experience service</p>
+          <p (click)="scrollToSections('effortless')" class="header-link-nav">We work with</p>
+        </div>
+      </div>
+      <p class="btn-burger-quote" (click)="scrollToSections('quote')">Get Instant Quote</p>
+    </div>
+  </div>
+</header>
+
+<!-- POPUP -->
+<div class="not-found" [class.visible]="isSaveButtonVisible" (click)="showPopup()">
+    <p class="not-found-text">SAVE $100</p>
+</div>
+
+<div class="popup" [class.active]="isPopupActive" (click)="onPopupBackgroundClick($event)">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+        <div class="popup-content-info-container-image">
+            <img class="popup-content-img" src="images/popup.webp" alt="" loading="lazy">
+            <div class="popup-content-info-no-thanks-container">
+            </div>
+        </div>
+        <div class="popup-content-info-container">
+            <div class="popup-content-info-container-image-container">
+                <div class="popup-content-info-container-img-container">
+                    <img class="popup-content-info-container-img-logo" src="icons/tech-group-logo.svg" alt="" loading="lazy">
+                </div>
+            </div>
+            <div class="popup-content-info-title-container">
+                <p class="popup-content-info-title">Save Instantly</p>
+                <p class="popup-content-info-discount"><span class="popup-content-info-discount-span">$</span>100</p>
+                <p class="popup-content-info-discount-text">Book now and automatically save $100!</p>
+            </div>
+            <div class="popup-content-info">
+                <div class="popup-content-info-button-container">
+                    <p class="popup-content-info-no-thanks" (click)="onNoThanks()">No thanks, I'll pay full price</p>
+                    <a class="popup-content-info-button" href="tel:+18557205244" (click)="onGetDiscount()">Get Discount</a>
+                </div>
+            </div>
+            <p routerLink="/terms-and-conditions" class="popup-content-info-terms" (click)="closePopup()">Terms & restrictions Apply <span> | </span> offer valid for shipments over 2500 miles</p>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN -->
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer">
+    <div class="footer-container">
+
+      <div class="first-container-info">
+        <img  class="logo-footer" src="icons/tech-group-logo-white.svg" alt="Tech Transport Logo" loading="lazy">
+        <p class="first-container-info-text">Our focus is simply to build the best auto transport experience for thousands of customers & drivers daily!</p>
+      </div>
+
+      <nav class="list-info-container" aria-label="Footer navigation">
+
+        <!-- Individual Services -->
+        <!-- <div class="list-info-container-item">
+          <p class="list-info-container-item-title">Individual Services</p>
+          <a href="https://tigerautotransport.com/service/open-carrier-car-shipping" class="list-info-container-item-link">Open Carrier Car Shipping</a>
+          <a href="https://tigerautotransport.com/service/enclosed-car-shipping" class="list-info-container-item-link">Enclosed Car Shipping</a>
+          <a href="https://tigerautotransport.com/service/state-to-state-car-shipping" class="list-info-container-item-link">State-to-State Car Shipping</a>
+          <a href="https://tigerautotransport.com/service/luxury-exotic-car-shipping" class="list-info-container-item-link">Luxury & Exotic Car Shipping</a>
+          <a href="https://tigerautotransport.com/service/college-car-shipping" class="list-info-container-item-link">College Car Shipping</a>
+          <a href="https://tigerautotransport.com/service/seasonal-vehicle-relocation" class="list-info-container-item-link">Seasonal Vehicle Relocation</a>
+        </div> -->
+
+        <!-- Business Services -->
+        <!-- <div class="list-info-container-item">
+          <p class="list-info-container-item-title">Business Services</p>
+          <a href="https://tigerautotransport.com/service/car-dealer-shipping" class="list-info-container-item-link">Car Dealer Shipping</a>
+          <a href="https://tigerautotransport.com/service/auto-auction-shipping" class="list-info-container-item-link">Auto Auction Shipping</a>
+          <a href="https://tigerautotransport.com/service/rental-car-shipping" class="list-info-container-item-link">Rental Car Shipping</a>
+          <a href="https://tigerautotransport.com/service/fleet-cars-shipping" class="list-info-container-item-link">Fleet Cars Shipping</a>
+          <a href="https://tigerautotransport.com/service/corporate-relocation" class="list-info-container-item-link">Corporate Relocation</a>
+          <a href="https://tigerautotransport.com/service/auto-shows-shipping" class="list-info-container-item-link">Auto Shows Shipping</a>
+        </div> -->
+
+        <!-- Sitemap -->
+        <div class="list-info-container-item">
+          <p class="list-info-container-item-title">Sitemap</p>
+          <a routerLink="/" class="list-info-container-item-link-href">Homepage</a>
+          <p (click)="scrollToSections('how-it-works')" class="list-info-container-item-link-href">How It Works</p>
+          <p (click)="scrollToSections('faqs')" class="list-info-container-item-link-href">FAQ</p>
+          <p (click)="scrollToSections('quote')" class="list-info-container-item-link list-info-container-item-link-shipping-calculator">Get Instant Quote</p>
+        </div>
+
+        <address class="list-info-container-item-footer">
+          <p class="list-info-container-item-title">Support</p>
+          <a href="tel:+1231231234" class="list-info-container-item-link-support">123-123-1234</a>
+          <a href="mailto:support@techtransportgroup.com" class="list-info-container-item-link-support">support@techtransportgroup.com</a>
+          <span class="list-info-container-item-link-support">Mon - Fri: 8 AM - 5 PM</span>
+          <p class="list-info-container-item-link-support" routerLink="/terms-and-conditions">Terms & Conditions</p>
+          <p class="list-info-container-item-link-support" routerLink="/privacy-policy">Privacy Policy</p>
+        </address>
+
+      </nav>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-block-bottom">
+    <p class="footer-block-bottom-text">Tech Group — © {{ currentYear }} All Rights Reserved</p>
+  </div>
+</footer>

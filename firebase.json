@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/tech-group/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
