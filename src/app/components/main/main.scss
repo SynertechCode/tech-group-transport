@@ -1,4 +1,5 @@
 .hero {
+  position: relative;
   background-color: rgb(173, 173, 173);
   min-height: 100vh;
   height: 100%;
@@ -8,7 +9,17 @@
   justify-content: space-between;
 }
 
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -17,6 +28,12 @@
   height: 100%;
   margin-top: 16vh;
   padding: 0 12px;
+  z-index: 1;
+}
+
+.haulex-form {
+  position: relative;
+  z-index: 1;
 }
 
 .swiper-pagination-bullet-active {
@@ -78,6 +95,8 @@
     justify-content: center;
     background-color: #fff;
     width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-cards {
@@ -1169,17 +1188,11 @@ text-transform: uppercase;
     position: relative;
 }
 .container-experience-you-can-trust-inner-images-item-first {
-  min-width: 676px;
-  min-height: 517px;
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: #adadad;
   border-radius: 10px;
 }
-// .container-experience-you-can-trust-inner-images-item-first {
-//     border-radius: 10px;
-//     height: auto;
-// }
 .container-experience-you-can-trust-inner-title-button {
     display: flex;
     justify-content: center;
@@ -1294,8 +1307,6 @@ background-color: #E02424;
         margin-top: 18px;
     }
     .container-experience-you-can-trust-inner-images-item-first {
-        min-width: 350px;
-        min-height: 300px;
         display: flex;
         justify-content: center;
         margin: 0 auto;
@@ -1369,8 +1380,6 @@ background-color: #E02424;
         margin-top: 18px;
     }
     .container-experience-you-can-trust-inner-images-item-first {
-        min-width: 350px;
-        min-height: 300px;
         display: flex;
         justify-content: center;
         margin: 0 auto;
@@ -2012,9 +2021,7 @@ margin-bottom: 8px;
 }
 
 .wpar-container-photo {
-    min-width: 590px;
     max-width: 590px;
-    min-height: 400px;
     width: 100%;
     height: 100%;
     border-radius: 20px;
@@ -2191,10 +2198,10 @@ margin-bottom: 8px;
         height: 24px;
     }
     .wpar-container-photo {
-        min-width: 100%;
-        height: auto;
-        max-width: 590px;
-        border-radius: 16px;
+      max-width: 590px;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
     }
 }
 
@@ -2597,6 +2604,16 @@ svg > a:hover text {
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  border-radius: 16px 16px 0 0;
+}
+
+.review-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .testimonial-swiper-section::before {
@@ -2606,7 +2623,6 @@ svg > a:hover text {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
 
