@@ -21,7 +21,7 @@
 
 .header-content {
   position: relative;
-  z-index: 2;
+  z-index: 102;
   display: flex;
   align-items: center;
   width: 100%;
@@ -109,7 +109,7 @@
   display: flex;
   flex-direction: column;
   justify-content: end;
-  z-index: 1;
+  z-index: 101;
   top: 0;
   left: 0;
   width: 100%;
@@ -709,7 +709,7 @@ color: #D63439
   transform: translateY(0px);
   right: 28px;
   height: 58px;
-  z-index: 10000;
+  z-index: 100;
   display: flex;
   justify-content: end;
   border-radius: 10px 10px 0px 0px;

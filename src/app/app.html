@@ -22,13 +22,13 @@
             <button class="header-quote-button" (click)="scrollToSections('quote')">Get Instant Quote</button>
             <div class="header-call">
               <p class="header-call-text">Current wait time: 8 seconds</p>
-              <a class="header-call-link" href="tel:123-123-1234">123-123-1234</a>
+              <a class="header-call-link" href="tel:1360396320">360-369-6320</a>
             </div>
           </div>
         } @else {
           <div class="header-call">
             <img src="icons/phone.svg" alt="phone-call" width="18" height="18">
-            <a class="header-call-link" href="tel:123-123-1234">123-123-1234</a>
+            <a class="header-call-link" href="tel:1360396320">360-369-6320</a>
           </div>
         }
         <div class="header-burger" [ngClass]="{ 'active': isBurgerActive }" (click)="toggleBurger()">
@@ -47,6 +47,8 @@
           <p (click)="scrollToSections('experience-you-can-trust')" class="header-link-nav">Experience service</p>
           <p (click)="scrollToSections('effortless')" class="header-link-nav">We work with</p>
         </div>
+        <p (click)="scrollToSections('faqs')" class="header-link-nav">faqs</p>
+        <p (click)="scrollToSections('contact')" class="header-link-nav">Contact Us</p>
       </div>
       <p class="btn-burger-quote" (click)="scrollToSections('quote')">Get Instant Quote</p>
     </div>
@@ -137,7 +139,7 @@
 
         <address class="list-info-container-item-footer">
           <p class="list-info-container-item-title">Support</p>
-          <a href="tel:+1231231234" class="list-info-container-item-link-support">123-123-1234</a>
+          <a href="tel:+1360396320" class="list-info-container-item-link-support">360-369-6320</a>
           <a href="mailto:support@techtransportgroup.com" class="list-info-container-item-link-support">support@techtransportgroup.com</a>
           <span class="list-info-container-item-link-support">Mon - Fri: 8 AM - 5 PM</span>
           <p class="list-info-container-item-link-support" routerLink="/terms-and-conditions">Terms & Conditions</p>
