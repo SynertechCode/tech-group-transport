@@ -30,6 +30,26 @@ export class App implements AfterViewInit {
   ngAfterViewInit(): void {
     this.quoteBtn = document.querySelector('.header-quote-button');
     this.updateQuoteBtn(window.scrollY > 600);
+
+    // Capture UTM parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = urlParams.get('utm_source');
+    const utmCampaign = urlParams.get('utm_campaign');
+    const utmTerm = urlParams.get('utm_term');
+
+    if (utmSource) localStorage.setItem('utm_source', utmSource);
+    if (utmCampaign) localStorage.setItem('utm_campaign', utmCampaign);
+    if (utmTerm) localStorage.setItem('utm_term', utmTerm);
+
+    if (utmSource || utmCampaign || utmTerm) {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        'event': 'utm_parameters',
+        'utm_source': utmSource,
+        'utm_campaign': utmCampaign,
+        'utm_term': utmTerm
+      });
+    }
   }
 
   @HostListener('window:scroll')
@@ -42,6 +62,16 @@ export class App implements AfterViewInit {
     if (event.clientY <= 0 && !this.hasShownExitPopup && !this.isPopupActive) {
       this.showPopup();
       this.hasShownExitPopup = true;
+    }
+  }
+
+  @HostListener('window:message', ['$event'])
+  onMessage(event: MessageEvent): void {
+    if (event.data && event.data.type === 'form_step' && event.data.step === 3) {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        'event': 'form_step_3_completed'
+      });
     }
   }
 
